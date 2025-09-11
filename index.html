@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blood & Organ Donation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo">❤</div>
+        <div class="brand-text">
+          <h1>Blood & Organ Donation</h1>
+          <p class="tag">Be a hero today — save lives.</p>
+        </div>
+      </div>
+      <nav class="top-actions">
+        <button id="btnFind" class="btn ghost">Find Donors</button>
+        <button id="btnRegister" class="btn primary">+ Register as Donor</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <h2>Ready to Save Lives?</h2>
+          <p>Join thousands of heroes — find donors in your area or register to become a life-saver. Quick, safe, and impactful.</p>
+          <div class="hero-cta">
+            <button id="heroFind" class="btn large ghost"><span>🔎</span> Find Donors</button>
+            <button id="heroRegister" class="btn large primary">+ Register as Donor</button>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-heart">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.8 7.2a4.8 4.8 0 0 0-6.8 0L12 9.2l-2-2a4.8 4.8 0 0 0-6.8 6.8L12 24l8.8-10a4.8 4.8 0 0 0 0-6.8z"></path>
+            </svg>
+          </div>
+          <p class="hero-note">Every donation counts</p>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="stats" aria-hidden="false">
+        <div class="stat-card" id="stat-total">
+          <div class="stat-icon">👥</div>
+          <div class="stat-body">
+            <div class="stat-title">Total Donors</div>
+            <div class="stat-count" id="totalCount">0</div>
+            <div class="stat-desc">Registered life-savers</div>
+          </div>
+        </div>
+
+        <div class="stat-card" id="stat-blood">
+          <div class="stat-icon">💧</div>
+          <div class="stat-body">
+            <div class="stat-title">Blood Donors</div>
+            <div class="stat-count" id="bloodCount">0</div>
+            <div class="stat-desc">Ready to donate blood</div>
+          </div>
+        </div>
+
+        <div class="stat-card" id="stat-organ">
+          <div class="stat-icon">💚</div>
+          <div class="stat-body">
+            <div class="stat-title">Organ Donors</div>
+            <div class="stat-count" id="organCount">0</div>
+            <div class="stat-desc">Committed to organ donation</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTION / SEARCH -->
+      <section class="controls">
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Search by name, blood type, organ or location..." />
+          <select id="filterType" title="Filter by blood type">
+            <option value="">All Blood Types</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+          </select>
+          <button id="clearSearch" class="btn ghost small">Clear</button>
+        </div>
+      </section>
+
+      <!-- DONOR LIST -->
+      <section class="donor-list-section">
+        <h3>Registered Donors</h3>
+        <div id="donorGrid" class="donor-grid" aria-live="polite"></div>
+        <div id="emptyMsg" class="empty-msg">No donors found. Register to become a donor.</div>
+      </section>
+
+      <!-- REGISTER PANEL (modal-like) -->
+      <div id="registerPanel" class="panel hidden" role="dialog" aria-modal="true" aria-labelledby="regTitle">
+        <div class="panel-inner">
+          <button id="closePanel" class="close">✕</button>
+          <h3 id="regTitle">Register as Donor</h3>
+          <form id="donorForm" autocomplete="off">
+            <div class="form-row">
+              <label for="donorName">Full Name</label>
+              <input id="donorName" type="text" required placeholder="e.g. Priya Sharma" />
+            </div>
+
+            <div class="form-row two">
+              <div>
+                <label for="donorBlood">Blood Type</label>
+                <select id="donorBlood" required>
+                  <option value="">Select</option>
+                  <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                  <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="donorOrgan">Organ (optional)</label>
+                <input id="donorOrgan" type="text" placeholder="e.g. Kidney, Liver, Heart" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="donorLocation">Location (City / Area)</label>
+              <input id="donorLocation" type="text" required placeholder="City, State" />
+            </div>
+
+            <div class="form-row">
+              <label for="donorContact">Contact (phone or email)</label>
+              <input id="donorContact" type="text" required placeholder="Phone or email" />
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Register</button>
+              <button type="button" id="cancelBtn" class="btn ghost">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TOAST -->
+      <div id="toast" class="toast hidden">Saved</div>
+    </main>
+
+    <footer class="site-footer">
+      <div>© <span id="year"></span> Blood & Organ Donation Initiative — Built with ❤️</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
